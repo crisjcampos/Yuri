@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Booking Confirmed</title>
+  <link rel="stylesheet" href="/styles.css">
+
+  <style>
+    /* Center the success container */
+    body {
+      margin: 0;
+      background: #ffeef4;
+      font-family: "Poppins", sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .success-container {
+      background: white;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+      border: 2px solid #ffd3e6;
+      animation: fadeIn 1s ease-out forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Confetti styling */
+    .confetti {
+      position: fixed;
+      width: 8px;
+      height: 8px;
+      pointer-events: none;
+      z-index: 999;
+      border-radius: 50%;
+      animation: fall 3s linear forwards;
+    }
+
+    .confetti-red { background: #ff6b6b; box-shadow: 0 0 6px rgba(255,107,107,0.6); }
+    .confetti-yellow { background: #ffd93d; box-shadow: 0 0 6px rgba(255,217,61,0.6); }
+    .confetti-green { background: #6bcf7f; box-shadow: 0 0 6px rgba(107,207,127,0.6); }
+    .confetti-purple { background: #a78bfa; box-shadow: 0 0 6px rgba(167,139,250,0.6); }
+    .confetti-blue { background: #5aa6e8; box-shadow: 0 0 6px rgba(90,166,232,0.6); }
+
+    @keyframes fall {
+      to {
+        transform: translateY(100vh);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="success-container">
+    <h1 class="main-title">Booking Request Confirmed!</h1>
+    <p class="subtitle">Thank you for choosing Yuri's Dog Grooming.</p>
+
+    <a href="/" class="gallery-under-btn" style="margin-top:20px; display:inline-block;">
+      ← Return Home
+    </a>
+  </div>
+
+  <script>
+    // Confetti animation
+    function createConfetti() {
+      const colors = [
+        'confetti-red',
+        'confetti-yellow',
+        'confetti-green',
+        'confetti-purple',
+        'confetti-blue'
+      ];
+      
+      for (let i = 0; i < 150; i++) {
+        const confetti = document.createElement('div');
+        confetti.classList.add('confetti');
+        confetti.classList.add(colors[Math.floor(Math.random() * colors.length)]);
+        
+        confetti.style.left = Math.random() * window.innerWidth + 'px';
+        confetti.style.top = '-10px';
+        confetti.style.animationDelay = Math.random() * 2 + 's';
+        
+        document.body.appendChild(confetti);
+        
+        setTimeout(() => {
+          confetti.remove();
+        }, 4000);
+      }
+    }
+
+    window.addEventListener('load', createConfetti);
+  </script>
+
+</body>
+</html>

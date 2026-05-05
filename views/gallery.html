@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Gallery</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body class="gallery-body">
+
+  <h1 class="gallery-title">Gallery</h1>
+  <p class="gallery-subtitle">Examples of My Grooming Work</p>
+
+  <!-- IMAGE UPLOAD FORM (ADMIN ONLY) -->
+  {{uploadForm}}
+
+  <!-- GALLERY GRID -->
+  <div class="gallery-grid">
+    {{images}}
+  </div>
+
+  <a href="/" class="gallery-under-btn" style="margin-top:20px; display:inline-block;">← Back Home</a>
+
+</body>
+</html>

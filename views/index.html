@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Yuri's Dog Grooming</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+
+  <div class="logo-wrapper">
+    <img src="/images/your-logo.png" class="custom-header" alt="Header Image">
+  </div>
+
+  <!-- THREE SERVICE BOXES -->
+<div class="pricing-container">
+
+  <!-- $40 Box -->
+  <div class="price-box small-box">
+    <div class="price-grid">
+      <img src="/images/basic-wash.jpg" class="price-img" alt="Basic Wash">
+
+      <div class="price-details">
+        <div class="price-header">
+          <h3>Basic Wash</h3>
+          <p class="includes-label">Includes:</p>
+        </div>
+
+        <ul class="price-info">
+          <li>Bath</li>
+          <li>Blow dry</li>
+          <li>Brush out</li>
+          <li>Nail File</li>
+          <li>External Expression of Anal Glands (Upon Request)</li>
+          <li>Ear cleaning</li>
+        </ul>
+      </div>
+
+      <p class="price-tag">$40</p>
+    </div>
+  </div>
+
+  <!-- $50 Box -->
+  <div class="price-box small-box">
+    <div class="price-grid">
+      <img src="/images/Bath-and-Tidy.jpeg" class="price-img" alt="Bath & Tidy">
+
+      <div class="price-details">
+        <div class="price-header">
+          <h3>Bath & Tidy</h3>
+          <p class="includes-label">Includes:</p>
+        </div>
+
+        <ul class="price-info">
+          <li>Maintenance Groom around the Eyes, Paw Pads, and Sanitary Areas</li>
+          <li>Bath</li>
+          <li>Face tidy</li>
+          <li>Paw & pad trim</li>
+          <li>Nail File</li>
+          <li>Ear Cleaning/Hair Removal</li>
+          <li>External Expression of Anal Glands (Upon Request)</li>
+        </ul>
+      </div>
+
+      <p class="price-tag">$50</p>
+    </div>
+  </div>
+
+  <!-- $60 Box (Featured) -->
+  <div class="price-box large-box featured">
+    <div class="price-grid">
+      <img src="/images/full-groom.png" class="price-img" alt="Full Groom">
+
+      <div class="price-details">
+        <div class="price-header">
+          <h3>Full Groom</h3>
+          <p class="includes-label">Includes:</p>
+        </div>
+
+        <ul class="price-info">
+          <li>Haircut of Choice</li>
+          <li>Bath & blow dry</li>
+          <li>Brush out</li>
+          <li>Sanitary trim</li>
+          <li>Nail File</li>
+          <li>Ear cleaning/Hair Removal</li>
+          <li>Paw & pad trim</li>
+          <li>External Expression of Anal Glands</li>
+        </ul>
+      </div>
+
+      <p class="price-tag">$60</p>
+    </div>
+  </div>
+
+</div>
+
+
+
+  </div>
+
+  <!-- BOOKING FORM SECTION -->
+  <div id="booking-section">
+    <h2 class="subtitle">Book With Me</h2>
+
+    <form action="/submit-booking" method="POST" class="booking-form">
+      <input name="name" placeholder="Your Name" required>
+      <input name="number" placeholder="Phone Number" required>
+      <input name="email" placeholder="Email" required>
+      <input name="dogBreed" placeholder="Dog Breed" required>
+      <input name="dogName" placeholder="Dog Name" required>
+
+      <label>Select Date</label>
+      <input type="date" name="date" required>
+
+      <label>Select Time</label>
+      <select name="time" required>
+        <option>9:00 AM</option>
+        <option>10:00 AM</option>
+        <option>11:00 AM</option>
+        <option>12:00 PM</option>
+        <option>1:00 PM</option>
+        <option>2:00 PM</option>
+        <option>3:00 PM</option>
+      </select>
+
+      <button type="submit" class="submit-btn">Book Appointment</button>
+    </form>
+  </div>
+
+  <!-- GALLERY BOX MOVED TO BOTTOM -->
+<div class="home-box-container">
+  <div class="home-box">
+    <h2>Gallery</h2>
+    <p>See examples of my grooming work and transformations.</p>
+    <a href="/gallery" class="box-btn">View Gallery</a>
+  </div>
+
+</div>
+  <!-- PHONE BOOKING BUTTON (BOTTOM LEFT) -->
+  <a href="tel:832-798-5317" class="phone-button">Book Through Phone</a>
+
+  <!-- TINY BONE ADMIN ICON -->
+  <div class="admin-bone" onclick="spinBone()">
+    🦴
+  </div>
+
+  <script>
+    function spinBone() {
+      const bone = document.querySelector('.admin-bone');
+      bone.classList.add('spin');
+
+      setTimeout(() => {
+        bone.classList.remove('spin');
+        window.location.href = "/admin-login.html";
+      }, 600);
+    }
+  </script>
+
+</body>
+</html>
