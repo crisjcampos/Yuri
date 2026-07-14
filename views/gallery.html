@@ -36,8 +36,46 @@
     {{images}}
   </div>
 
+  <div id="imageModal" class="image-modal" aria-hidden="true">
+    <button type="button" class="image-modal-close" aria-label="Close image view">×</button>
+    <img id="imageModalImage" alt="Enlarged gallery image">
+  </div>
+
   <a href="/" class="gallery-under-btn" style="margin-top:20px; display:inline-block;" data-en="← Back Home" data-es="← Volver al inicio">← Back Home</a>
 
   <script src="/translate.js"></script>
+  <script>
+    function setupGalleryLightbox() {
+      const modal = document.getElementById("imageModal");
+      const modalImage = document.getElementById("imageModalImage");
+
+      if (!modal || !modalImage) return;
+
+      document.querySelectorAll(".gallery-image").forEach(img => {
+        img.addEventListener("click", () => {
+          modalImage.src = img.src;
+          modalImage.alt = img.alt || "Gallery image";
+          modal.classList.add("active");
+          modal.setAttribute("aria-hidden", "false");
+        });
+      });
+
+      modal.addEventListener("click", (event) => {
+        if (event.target === modal || event.target.classList.contains("image-modal-close")) {
+          modal.classList.remove("active");
+          modal.setAttribute("aria-hidden", "true");
+        }
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          modal.classList.remove("active");
+          modal.setAttribute("aria-hidden", "true");
+        }
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", setupGalleryLightbox);
+  </script>
 </body>
 </html>

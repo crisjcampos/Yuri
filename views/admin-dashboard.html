@@ -153,6 +153,11 @@
     </div>
   </div>
 
+  <div id="imageModal" class="image-modal" aria-hidden="true">
+    <button type="button" class="image-modal-close" aria-label="Close image view">×</button>
+    <img id="imageModalImage" alt="Enlarged gallery image">
+  </div>
+
   <!-- EDIT POPUP -->
   <div id="editPopup" class="edit-popup">
     <div class="edit-box">
@@ -242,6 +247,59 @@ async function deleteBooking(id) {
 
   location.reload();
 }
+
+function setupGalleryLightbox() {
+  const modal = document.getElementById("imageModal");
+  const modalImage = document.getElementById("imageModalImage");
+
+  if (!modal || !modalImage) return;
+
+  document.querySelectorAll(".gallery-image").forEach(img => {
+    img.addEventListener("click", () => {
+      modalImage.src = img.src;
+      modalImage.alt = img.alt || "Gallery image";
+      modal.classList.add("active");
+      modal.setAttribute("aria-hidden", "false");
+    });
+  });
+
+  modal.addEventListener("click", (event) => {
+    if (event.target === modal || event.target.classList.contains("image-modal-close")) {
+      modal.classList.remove("active");
+      modal.setAttribute("aria-hidden", "true");
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      modal.classList.remove("active");
+      modal.setAttribute("aria-hidden", "true");
+    }
+  });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  setupGalleryLightbox();
+
+  document.querySelectorAll(".delete-image-btn").forEach(button => {
+    button.addEventListener("click", async () => {
+      const filename = button.dataset.filename;
+      if (!confirm("Remove this image from the gallery?")) return;
+
+      const response = await fetch("/delete-image", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ filename })
+      });
+
+      if (response.ok) {
+        button.closest(".gallery-card-admin").remove();
+      } else {
+        alert("Could not remove the image.");
+      }
+    });
+  });
+});
 </script>
 
 </body>

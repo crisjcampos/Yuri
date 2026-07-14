@@ -88,6 +88,16 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage });
 
+function getGalleryFiles() {
+  const uploadsDir = path.join(__dirname, "public", "uploads");
+  if (!fs.existsSync(uploadsDir)) return [];
+
+  return fs
+    .readdirSync(uploadsDir)
+    .filter(file => fs.statSync(path.join(uploadsDir, file)).isFile())
+    .sort();
+}
+
 // Protect admin pages
 function requireLogin(req, res, next) {
   if (req.session.loggedIn) return next();
@@ -225,12 +235,17 @@ app.get("/admin-dashboard", requireAdmin, (req, res) => {
     )
     .join("");
 
-  const galleryFiles = fs.existsSync("./public/uploads")
-    ? fs.readdirSync("./public/uploads")
-    : [];
+  const galleryFiles = getGalleryFiles();
 
   const galleryImagesHTML = galleryFiles
-    .map(file => `<img src="/uploads/${file}" alt="Gallery Image">`)
+    .map(file => {
+      const safeName = file.replace(/"/g, '&quot;');
+      return `
+        <div class="gallery-card-admin">
+          <img src="/uploads/${encodeURIComponent(file)}" alt="Gallery Image" class="gallery-image" data-filename="${safeName}">
+          <button type="button" class="delete-image-btn" data-filename="${safeName}">Remove</button>
+        </div>`;
+    })
     .join("");
 
   let page = fs.readFileSync("./views/admin-dashboard.html", "utf8");
@@ -272,12 +287,16 @@ app.post("/delete-booking", (req, res) => {
 
 // Gallery page
 app.get("/gallery", (req, res) => {
-  const files = fs.existsSync("./public/uploads")
-    ? fs.readdirSync("./public/uploads")
-    : [];
+  const files = getGalleryFiles();
 
   const imagesHTML = files
-    .map(file => `<img src="/uploads/${file}" alt="Grooming Image">`)
+    .map(file => {
+      const safeName = file.replace(/"/g, '&quot;');
+      return `
+        <div class="gallery-card">
+          <img src="/uploads/${encodeURIComponent(file)}" alt="Grooming Image" class="gallery-image" data-filename="${safeName}">
+        </div>`;
+    })
     .join("");
 
   let page = fs.readFileSync("./views/gallery.html", "utf8");
@@ -312,6 +331,34 @@ app.get(["/contact", "/contact.html"], (req, res) => {
 // Upload image (ADMIN ONLY)
 app.post("/upload-image", requireAdmin, upload.single("image"), (req, res) => {
   res.redirect("/gallery");
+});
+
+// Remove image (ADMIN ONLY)
+app.post("/delete-image", requireAdmin, (req, res) => {
+  const { filename } = req.body;
+
+  if (!filename) {
+    return res.status(400).json({ success: false, error: "Image filename is required" });
+  }
+
+  const safeName = path.basename(filename);
+  const filePath = path.join(__dirname, "public", "uploads", safeName);
+
+  if (!safeName || safeName !== filename) {
+    return res.status(400).json({ success: false, error: "Invalid image filename" });
+  }
+
+  if (!fs.existsSync(filePath)) {
+    return res.status(404).json({ success: false, error: "Image not found" });
+  }
+
+  try {
+    fs.unlinkSync(filePath);
+    res.json({ success: true });
+  } catch (err) {
+    console.error("Error deleting image:", err);
+    res.status(500).json({ success: false, error: "Could not delete image" });
+  }
 });
 
 // Logout
