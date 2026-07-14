@@ -669,6 +669,10 @@ header.site-header {
   align-items: stretch;
 }
 
+.small-box .price-grid {
+  min-height: 280px;
+}
+
 .large-box .price-grid {
   min-height: 220px;
 }
