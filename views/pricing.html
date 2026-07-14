@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Pricing - Yuri's Dog Grooming</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="site-branding">
+      <a href="/" class="site-logo">
+        <img src="/images/name%20logo.png" alt="Yuri's Dog Grooming Name Logo">
+        <img src="/images/logo%20icon.png" alt="Yuri's Dog Grooming Icon">
+      </a>
+      <button class="lang-toggle" onclick="toggleLanguage()" aria-label="Translate to Spanish">Español</button>
+    </div>
+    <nav class="site-nav">
+      <ul>
+        <li><a href="/" data-en="Home" data-es="Inicio">Home</a></li>
+        <li><a href="/gallery" data-en="Gallery" data-es="Galería">Gallery</a></li>
+        <li><a href="/about" data-en="About Us" data-es="Sobre nosotros">About Us</a></li>
+        <li><a href="/contact" data-en="Contact" data-es="Contacto">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="pricing-section">
+    <h1 class="section-title" data-en="Pricing" data-es="Precios">Pricing</h1>
+    <p class="hero-text" style="max-width: 840px; margin: 0 auto 28px;" data-en="Choose the right grooming package for your dog. Each service is delivered with gentle handling, a full bath, coat care, and attention to detail." data-es="Elige el paquete de aseo adecuado para tu perro. Cada servicio se ofrece con un manejo delicado, un baño completo, cuidado del pelaje y atención al detalle.">Choose the right grooming package for your dog. Each service is delivered with gentle handling, a full bath, coat care, and attention to detail.</p>
+
+    <div class="pricing-container">
+      <div class="price-box small-box">
+        <div class="price-grid">
+          <img src="/images/basic-wash.jpg" class="price-img" alt="Basic Wash">
+          <div class="price-details">
+            <div class="price-header">
+              <h3 data-en="Basic Wash" data-es="Baño básico">Basic Wash</h3>
+              <p class="includes-label" data-en="Includes:" data-es="Incluye:">Includes:</p>
+            </div>
+            <ul class="price-info">
+              <li data-en="Bath" data-es="Baño">Bath</li>
+              <li data-en="Blow dry" data-es="Secado con aire">Blow dry</li>
+              <li data-en="Brush out" data-es="Cepillado">Brush out</li>
+              <li data-en="Nail File" data-es="Lima de uñas">Nail File</li>
+              <li data-en="External Expression of Anal Glands (Upon Request)" data-es="Expresión externa de las glándulas anales (por solicitud)">External Expression of Anal Glands (Upon Request)</li>
+              <li data-en="Ear cleaning" data-es="Limpieza de oídos">Ear cleaning</li>
+            </ul>
+          </div>
+          <p class="price-tag">$40</p>
+        </div>
+      </div>
+
+      <div class="price-box small-box">
+        <div class="price-grid">
+          <img src="/images/Bath-and-Tidy.jpeg" class="price-img" alt="Bath & Tidy">
+          <div class="price-details">
+            <div class="price-header">
+              <h3 data-en="Bath & Tidy" data-es="Baño y orden">Bath & Tidy</h3>
+              <p class="includes-label" data-en="Includes:" data-es="Incluye:">Includes:</p>
+            </div>
+            <ul class="price-info">
+              <li data-en="Bath" data-es="Baño">Bath</li>
+              <li data-en="Face tidy" data-es="Ajuste facial">Face tidy</li>
+              <li data-en="Paw & pad trim" data-es="Recorte de patas y almohadillas">Paw & pad trim</li>
+              <li data-en="Nail File" data-es="Lima de uñas">Nail File</li>
+              <li data-en="Ear Cleaning/Hair Removal" data-es="Limpieza de oídos/eliminación de pelo">Ear Cleaning/Hair Removal</li>
+              <li data-en="External Expression of Anal Glands (Upon Request)" data-es="Expresión externa de las glándulas anales (por solicitud)">External Expression of Anal Glands (Upon Request)</li>
+            </ul>
+          </div>
+          <p class="price-tag">$50</p>
+        </div>
+      </div>
+
+      <div class="price-box large-box featured">
+        <div class="price-grid">
+          <img src="/images/dog with blue.png" class="price-img" alt="Full Groom">
+          <div class="price-details">
+            <div class="price-header">
+              <h3 data-en="Full Groom" data-es="Aseo completo">Full Groom</h3>
+              <p class="includes-label" data-en="Includes:" data-es="Incluye:">Includes:</p>
+            </div>
+            <ul class="price-info">
+              <li data-en="Maintenance Groom around the Eyes, Paw Pads, and Sanitary Areas" data-es="Aseo de mantenimiento alrededor de los ojos, almohadillas y áreas sanitarias">Maintenance Groom around the Eyes, Paw Pads, and Sanitary Areas</li>
+              <li data-en="Haircut of Choice" data-es="Corte a elección">Haircut of Choice</li>
+              <li data-en="Bath & blow dry" data-es="Baño y secado">Bath & blow dry</li>
+              <li data-en="Brush out" data-es="Cepillado">Brush out</li>
+              <li data-en="Sanitary trim" data-es="Recorte sanitario">Sanitary trim</li>
+              <li data-en="Nail File" data-es="Lima de uñas">Nail File</li>
+              <li data-en="Ear cleaning/Hair Removal" data-es="Limpieza de oídos/eliminación de pelo">Ear cleaning/Hair Removal</li>
+              <li data-en="Paw & pad trim" data-es="Recorte de patas y almohadillas">Paw & pad trim</li>
+              <li data-en="External Expression of Anal Glands" data-es="Expresión externa de las glándulas anales">External Expression of Anal Glands</li>
+            </ul>
+          </div>
+          <p class="price-tag">$60</p>
+        </div>
+      </div>
+    </div>
+  </main>
+  <script src="/translate.js"></script>
+</body>
+</html>

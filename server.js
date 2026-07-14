@@ -94,6 +94,11 @@ function requireLogin(req, res, next) {
   res.redirect("/admin-login.html");
 }
 
+function requireAdmin(req, res, next) {
+  if (req.session && req.session.isAdmin) return next();
+  res.redirect("/admin-login.html");
+}
+
 // ROUTES
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "views/index.html"));
@@ -173,6 +178,7 @@ app.post("/admin-login", (req, res) => {
 
   if (username === "Maryuri" && password === "2330") {
     req.session.loggedIn = true;
+    req.session.isAdmin = true;
     return res.redirect("/admin-dashboard");
   }
 
@@ -180,7 +186,7 @@ app.post("/admin-login", (req, res) => {
 });
 
 // Admin dashboard
-app.get("/admin-dashboard", requireLogin, (req, res) => {
+app.get("/admin-dashboard", requireAdmin, (req, res) => {
   let rows = [];
 
   try {
@@ -277,7 +283,7 @@ app.get("/gallery", (req, res) => {
   let page = fs.readFileSync("./views/gallery.html", "utf8");
   page = page.replace("{{images}}", imagesHTML);
 
-  if (req.session.loggedIn) {
+  if (req.session && req.session.isAdmin) {
     page = page.replace("{{uploadForm}}", `
       <form action="/upload-image" method="POST" enctype="multipart/form-data" class="upload-form">
         <input type="file" name="image" required>
@@ -291,8 +297,20 @@ app.get("/gallery", (req, res) => {
   res.send(page);
 });
 
+app.get(["/about", "/about.html"], (req, res) => {
+  res.sendFile(path.join(__dirname, "views/about.html"));
+});
+
+app.get(["/pricing", "/pricing.html"], (req, res) => {
+  res.sendFile(path.join(__dirname, "views/pricing.html"));
+});
+
+app.get(["/contact", "/contact.html"], (req, res) => {
+  res.sendFile(path.join(__dirname, "views/contact.html"));
+});
+
 // Upload image (ADMIN ONLY)
-app.post("/upload-image", requireLogin, upload.single("image"), (req, res) => {
+app.post("/upload-image", requireAdmin, upload.single("image"), (req, res) => {
   res.redirect("/gallery");
 });
 
@@ -307,9 +325,11 @@ app.use((req, res) => {
 });
 
 // Start server after SQL.js initialization
+const PORT = process.env.PORT || 3000;
+
 initializeDatabase()
   .then(() => {
-    app.listen(3000, () => console.log("Running at http://localhost:3000"));
+    app.listen(PORT, () => console.log(`Running at http://localhost:${PORT}`));
   })
   .catch(err => {
     console.error("Failed to initialize database:", err);

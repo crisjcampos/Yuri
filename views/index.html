@@ -8,137 +8,80 @@
 
 <body>
 
-  <div class="logo-wrapper">
-    <img src="/images/your-logo.png" class="custom-header" alt="Header Image">
-  </div>
-
-  <!-- THREE SERVICE BOXES -->
-<div class="pricing-container">
-
-  <!-- $40 Box -->
-  <div class="price-box small-box">
-    <div class="price-grid">
-      <img src="/images/basic-wash.jpg" class="price-img" alt="Basic Wash">
-
-      <div class="price-details">
-        <div class="price-header">
-          <h3>Basic Wash</h3>
-          <p class="includes-label">Includes:</p>
-        </div>
-
-        <ul class="price-info">
-          <li>Bath</li>
-          <li>Blow dry</li>
-          <li>Brush out</li>
-          <li>Nail File</li>
-          <li>External Expression of Anal Glands (Upon Request)</li>
-          <li>Ear cleaning</li>
-        </ul>
-      </div>
-
-      <p class="price-tag">$40</p>
+  <header class="site-header">
+    <div class="site-branding">
+      <a href="/" class="site-logo">
+        <img src="/images/name%20logo.png" alt="Yuri's Dog Grooming Name Logo">
+        <img src="/images/logo%20icon.png" alt="Yuri's Dog Grooming Icon">
+      </a>
+      <button class="lang-toggle" onclick="toggleLanguage()" aria-label="Translate to Spanish">Español</button>
     </div>
-  </div>
+    <nav class="site-nav">
+      <ul>
+        <li><a href="/gallery" data-en="Gallery" data-es="Galería">Gallery</a></li>
+        <li><a href="/pricing" data-en="Pricing" data-es="Precios">Pricing</a></li>
+        <li><a href="/contact" data-en="Contact Info" data-es="Información de contacto">Contact Info</a></li>
+        <li><a href="/about" data-en="About Us" data-es="Sobre nosotros">About Us</a></li>
+      </ul>
+    </nav>
+  </header>
 
-  <!-- $50 Box -->
-  <div class="price-box small-box">
-    <div class="price-grid">
-      <img src="/images/Bath-and-Tidy.jpeg" class="price-img" alt="Bath & Tidy">
-
-      <div class="price-details">
-        <div class="price-header">
-          <h3>Bath & Tidy</h3>
-          <p class="includes-label">Includes:</p>
-        </div>
-
-        <ul class="price-info">
-          <li>Maintenance Groom around the Eyes, Paw Pads, and Sanitary Areas</li>
-          <li>Bath</li>
-          <li>Face tidy</li>
-          <li>Paw & pad trim</li>
-          <li>Nail File</li>
-          <li>Ear Cleaning/Hair Removal</li>
-          <li>External Expression of Anal Glands (Upon Request)</li>
-        </ul>
-      </div>
-
-      <p class="price-tag">$50</p>
+  <section class="hero-banner">
+    <div class="hero-copy">
+      <p class="eyebrow" data-en="Gentle care, stylish grooming." data-es="Cuidado suave, estilismo elegante.">Gentle care, stylish grooming.</p>
+      <h1 class="hero-title" data-en="Welcome to Yuri's Dog Grooming" data-es="Bienvenido a Yuri's Dog Grooming">Welcome to Yuri's Dog Grooming</h1>
+      <p class="hero-text" data-en="Your dog deserves expert pampering, calm handling, and a spa-quality finish every visit." data-es="Tu perro merece un cuidado experto, un manejo tranquilo y un acabado de spa en cada visita.">Your dog deserves expert pampering, calm handling, and a spa-quality finish every visit.</p>
+      <a href="#booking-section" class="hero-cta" data-en="Book an Appointment" data-es="Reserva una cita">Book an Appointment</a>
     </div>
-  </div>
+    <img src="/images/candy.png" class="hero-candy" alt="Candy accent">
+  </section>
 
-  <!-- $60 Box (Featured) -->
-  <div class="price-box large-box featured">
-    <div class="price-grid">
-      <img src="/images/full-groom.png" class="price-img" alt="Full Groom">
-
-      <div class="price-details">
-        <div class="price-header">
-          <h3>Full Groom</h3>
-          <p class="includes-label">Includes:</p>
-        </div>
-
-        <ul class="price-info">
-          <li>Haircut of Choice</li>
-          <li>Bath & blow dry</li>
-          <li>Brush out</li>
-          <li>Sanitary trim</li>
-          <li>Nail File</li>
-          <li>Ear cleaning/Hair Removal</li>
-          <li>Paw & pad trim</li>
-          <li>External Expression of Anal Glands</li>
-        </ul>
-      </div>
-
-      <p class="price-tag">$60</p>
+  <section class="home-intro">
+    <div class="content-wrapper">
+      <p class="hero-text home-intro-text" data-en="Browse our new pages for full pricing, contact details, and more about how Yuri cares for your pet." data-es="Explora nuestras nuevas páginas para ver precios completos, detalles de contacto y más sobre cómo Yuri cuida a tu mascota.">Browse our new pages for full pricing, contact details, and more about how Yuri cares for your pet.</p>
+      <a href="/pricing" class="box-btn" style="margin-top: 18px;" data-en="See Pricing" data-es="Ver precios">See Pricing</a>
     </div>
-  </div>
-
-</div>
-
-
-
-  </div>
+  </section>
 
   <!-- BOOKING FORM SECTION -->
   <div id="booking-section">
-    <h2 class="subtitle">Book With Me</h2>
+    <h2 class="subtitle" data-en="Book With Me" data-es="Reserva conmigo">Book With Me</h2>
 
     <form action="/submit-booking" method="POST" class="booking-form">
-      <input name="name" placeholder="Your Name" required>
-      <input name="number" placeholder="Phone Number" required>
-      <input name="email" placeholder="Email" required>
-      <input name="dogBreed" placeholder="Dog Breed" required>
-      <input name="dogName" placeholder="Dog Name" required>
+      <input name="name" placeholder="Your Name" data-en-placeholder="Your Name" data-es-placeholder="Tu nombre" required>
+      <input name="number" placeholder="Phone Number" data-en-placeholder="Phone Number" data-es-placeholder="Número de teléfono" required>
+      <input name="email" placeholder="Email" data-en-placeholder="Email" data-es-placeholder="Correo electrónico" required>
+      <input name="dogBreed" placeholder="Dog Breed" data-en-placeholder="Dog Breed" data-es-placeholder="Raza del perro" required>
+      <input name="dogName" placeholder="Dog Name" data-en-placeholder="Dog Name" data-es-placeholder="Nombre del perro" required>
 
-      <label>Select Date</label>
+      <label data-en="Select Date" data-es="Selecciona la fecha">Select Date</label>
       <input type="date" name="date" required>
 
-      <label>Select Time</label>
+      <label data-en="Select Time" data-es="Selecciona la hora">Select Time</label>
       <select name="time" required>
         <option>9:00 AM</option>
         <option>10:00 AM</option>
-        <option>11:00 AM</option>
         <option>12:00 PM</option>
         <option>1:00 PM</option>
         <option>2:00 PM</option>
         <option>3:00 PM</option>
       </select>
 
-      <button type="submit" class="submit-btn">Book Appointment</button>
+      <button type="submit" class="submit-btn" data-en="Book Appointment" data-es="Reservar cita">Book Appointment</button>
     </form>
   </div>
 
   <!-- GALLERY BOX MOVED TO BOTTOM -->
 <div class="home-box-container">
   <div class="home-box">
-    <h2>Gallery</h2>
-    <p>See examples of my grooming work and transformations.</p>
-    <a href="/gallery" class="box-btn">View Gallery</a>
+    <h2 data-en="Gallery" data-es="Galería">Gallery</h2>
+    <p data-en="See examples of my grooming work and transformations." data-es="Mira ejemplos de mi trabajo de aseo y transformaciones.">See examples of my grooming work and transformations.</p>
+    <a href="/gallery" class="box-btn" data-en="View Gallery" data-es="Ver galería">View Gallery</a>
   </div>
 
 </div>
   <!-- PHONE BOOKING BUTTON (BOTTOM LEFT) -->
-  <a href="tel:832-798-5317" class="phone-button">Book Through Phone</a>
+  <a href="tel:832-798-5317" class="phone-button" data-en="Book Through Phone" data-es="Reservar por teléfono">Book Through Phone</a>
 
   <!-- TINY BONE ADMIN ICON -->
   <div class="admin-bone" onclick="spinBone()">
@@ -156,6 +99,7 @@
       }, 600);
     }
   </script>
+  <script src="/translate.js"></script>
 
 </body>
 </html>

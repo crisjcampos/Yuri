@@ -7,9 +7,26 @@
 </head>
 
 <body class="gallery-body">
+  <header class="site-header">
+    <div class="site-branding">
+      <a href="/" class="site-logo">
+        <img src="/images/name%20logo.png" alt="Yuri's Dog Grooming Name Logo">
+        <img src="/images/logo%20icon.png" alt="Yuri's Dog Grooming Icon">
+      </a>
+      <button class="lang-toggle" onclick="toggleLanguage()" aria-label="Translate to Spanish">Español</button>
+    </div>
+    <nav class="site-nav">
+      <ul>
+        <li><a href="/" data-en="Home" data-es="Inicio">Home</a></li>
+        <li><a href="/pricing" data-en="Pricing" data-es="Precios">Pricing</a></li>
+        <li><a href="/about" data-en="About Us" data-es="Sobre nosotros">About Us</a></li>
+        <li><a href="/contact" data-en="Contact" data-es="Contacto">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
-  <h1 class="gallery-title">Gallery</h1>
-  <p class="gallery-subtitle">Examples of My Grooming Work</p>
+  <h1 class="gallery-title" data-en="Gallery" data-es="Galería">Gallery</h1>
+  <p class="gallery-subtitle" data-en="Examples of My Grooming Work" data-es="Ejemplos de mi trabajo de aseo">Examples of My Grooming Work</p>
 
   <!-- IMAGE UPLOAD FORM (ADMIN ONLY) -->
   {{uploadForm}}
@@ -19,7 +36,8 @@
     {{images}}
   </div>
 
-  <a href="/" class="gallery-under-btn" style="margin-top:20px; display:inline-block;">← Back Home</a>
+  <a href="/" class="gallery-under-btn" style="margin-top:20px; display:inline-block;" data-en="← Back Home" data-es="← Volver al inicio">← Back Home</a>
 
+  <script src="/translate.js"></script>
 </body>
 </html>
