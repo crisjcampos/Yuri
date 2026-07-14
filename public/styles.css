@@ -663,7 +663,7 @@ header.site-header {
 /* TOP SECTION: IMAGE LEFT, TEXT RIGHT */
 .price-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 0.75fr;
   min-height: 200px;
   position: relative;
   align-items: stretch;
@@ -681,7 +681,7 @@ header.site-header {
 .price-img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
   object-position: center;
   border-right: 2px solid #ffd3e6;
   display: block;
